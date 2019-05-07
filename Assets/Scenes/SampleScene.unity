@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 183585732}
   m_Layer: 0
   m_Name: Tilemap
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1553,9 +1553,9 @@ GameObject:
   - component: {fileID: 1488607284}
   - component: {fileID: 1488607285}
   - component: {fileID: 1488607286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1790,6 +1790,9 @@ MonoBehaviour:
   lineRenderer: {fileID: 1488607285}
   connected: 0
   killHeight: -5.5
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &2045138020
 Prefab:
   m_ObjectHideFlags: 0

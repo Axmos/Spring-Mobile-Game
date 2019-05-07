@@ -10,6 +10,7 @@ public class SpringClick : MonoBehaviour {
     [SerializeField] LineRenderer lineRenderer;
     [SerializeField] bool connected;
     [SerializeField] float killHeight = -5.5f;
+    [SerializeField] LayerMask raycastMask;
 
     void Awake() {
         if (!Instance) {
@@ -32,16 +33,37 @@ public class SpringClick : MonoBehaviour {
     }
     public void SetSpringJoint(Rigidbody2D rigidbody) {
         if (!connected) {
-            //spring
-            Debug.Log("Set Sprung");
-            springJoint.connectedBody = rigidbody;
-            springJoint.enabled = true;
-            StartCoroutine(ClickLockout());
+            //raycast
+            var hitInfo = Physics2D.Raycast(transform.position, transform.position.DirectionTo(rigidbody.transform.position), 50f, raycastMask);
+            Debug.Log(transform.position.DirectionTo(rigidbody.transform.position));
+            Debug.Log(hitInfo.transform.tag);
+            if (hitInfo.transform.CompareTag("Spring Point")) {
+                //spring
+                Debug.Log("Set Sprung");
+                springJoint.connectedBody = rigidbody;
+                springJoint.enabled = true;
+                StartCoroutine(ClickLockout());
 
-            //line renderer
-            Transform temp = rigidbody.gameObject.transform;
-            lineRenderer.SetPosition(1, temp.position);
-            lineRenderer.enabled = true;
+                //line renderer
+                Transform temp = rigidbody.gameObject.transform;
+                lineRenderer.SetPosition(1, temp.position);
+                lineRenderer.enabled = true;
+            } else {
+                //Fail spring
+                Debug.Log("fail");
+            }
+            if (!connected) {
+                //spring
+                Debug.Log("Set Sprung");
+                springJoint.connectedBody = rigidbody;
+                springJoint.enabled = true;
+                StartCoroutine(ClickLockout());
+
+                //line renderer
+                Transform temp = rigidbody.gameObject.transform;
+                lineRenderer.SetPosition(1, temp.position);
+                lineRenderer.enabled = true;
+            }
         }
     }
 
