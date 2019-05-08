@@ -20,7 +20,7 @@ public class GameObjectListReference : Reference<List<GameObject>, GameObjectLis
 /// <summary>
 /// GameObjectListVariable Class.
 /// </summary>
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/Game Object List Variable")]
 public class GameObjectListVariable : Variable<List<GameObject>>
 {
 }

@@ -25,8 +25,6 @@ public class SpringClick : MonoBehaviour {
         if (Input.GetMouseButtonDown(0) && connected) {
             BreakSpring();
         }
-
-
         if (transform.position.y < killHeight) {
             SceneManager.LoadScene(0);
         }
@@ -35,8 +33,6 @@ public class SpringClick : MonoBehaviour {
         if (!connected) {
             //raycast
             var hitInfo = Physics2D.Raycast(transform.position, transform.position.DirectionTo(rigidbody.transform.position), 50f, raycastMask);
-            Debug.Log(transform.position.DirectionTo(rigidbody.transform.position));
-            Debug.Log(hitInfo.transform.tag);
             if (hitInfo.transform.CompareTag("Spring Point")) {
                 //spring
                 Debug.Log("Set Sprung");
@@ -51,18 +47,6 @@ public class SpringClick : MonoBehaviour {
             } else {
                 //Fail spring
                 Debug.Log("fail");
-            }
-            if (!connected) {
-                //spring
-                Debug.Log("Set Sprung");
-                springJoint.connectedBody = rigidbody;
-                springJoint.enabled = true;
-                StartCoroutine(ClickLockout());
-
-                //line renderer
-                Transform temp = rigidbody.gameObject.transform;
-                lineRenderer.SetPosition(1, temp.position);
-                lineRenderer.enabled = true;
             }
         }
     }

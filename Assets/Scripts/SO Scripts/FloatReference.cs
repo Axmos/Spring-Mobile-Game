@@ -12,5 +12,5 @@ public class FloatReference : Reference<float, FloatVariable> {
 /// <summary>
 /// FloatVariable Class.
 /// </summary>
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/Float Variable", order = 1)]
 public class FloatVariable : Variable<float> { }

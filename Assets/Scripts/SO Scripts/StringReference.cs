@@ -14,5 +14,5 @@ public class StringReference : Reference<string, StringVariable>
 /// <summary>
 /// StringVariable Class.
 /// </summary>
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/String Variable")]
 public class StringVariable : Variable<string> { }

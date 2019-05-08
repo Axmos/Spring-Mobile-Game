@@ -14,5 +14,5 @@ public class Vector3Reference : Reference<Vector3, Vector3Variable>
 /// <summary>
 /// Vector3Variable Class.
 /// </summary>
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Variables/Vector3")]
 public class Vector3Variable : Variable<Vector3> { }
